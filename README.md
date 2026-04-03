@@ -4,6 +4,7 @@ This project focuses on detecting Tuberculosis (TB) using deep learning techniqu
 
 Current stage:
 - CNN baseline model implementation
+- Enhanced model with CLAHE preprocessing and DenseNet121 (CheXNet)
 
 Future work:
 - Improve CNN architecture
