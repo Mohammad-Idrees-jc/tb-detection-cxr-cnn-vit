@@ -31,12 +31,13 @@ combining convolutional neural networks and transformer-based attention mechanis
 
 ## 📊 Results Comparison
 
-| Model 			|  Accuracy  |   AUC   |  Key Feature  |
-|-----------------------	|------------|---------|---------------|
-| CNN Baseline  		| ~78% (val) | -       | Basic CNN |
-| DenseNet121 (TF)	 	| 80.22%     | 0.8763 | CLAHE + Transfer Learning |
-| DenseNet121 (PyTorch) 	| 76.78% (val)| 0.8543 | Grad-CAM |
-| Hybrid CNN-Transformer 	| **93.04%** | **0.9860** | Attention + Global Features |
+| Model | Accuracy | AUC | Key Feature |
+|------|---------|-----|------------|
+| CNN Baseline | ~78% (val) | - | Basic CNN |
+| DenseNet121 (TF) | 80.22% | 0.8763 | CLAHE + Transfer Learning |
+| DenseNet121 (PyTorch) | 76.78% (val) | 0.8543 | Grad-CAM |
+| Hybrid CNN-Transformer | 93.04% | 0.9860 | Attention + Global Features |
+| ResNet50 + CLAHE (Final) | **92.76%** | **0.9856** | Deployment + Explainability |
 
 ---
 
@@ -56,8 +57,27 @@ combining convolutional neural networks and transformer-based attention mechanis
 - Hybrid CNN + Transformer architecture
 
 ---
+## 🌐 Deployment (Flask Web Application)
+
+A web-based interface was developed using Flask to demonstrate real-world usability of the trained model.
+
+### Features:
+- Upload chest X-ray image
+- Automated TB prediction
+- Visual explanations for trust and interpretability
+
+### Output Visualizations:
+- Original X-ray image
+- CLAHE enhanced image
+- Grad-CAM heatmap
+- Overlayed Grad-CAM on original image
+
+### Purpose:
+This deployment demonstrates how AI models can assist clinicians by providing both predictions and visual explanations, 
+increasing trust and transparency in medical AI systems.
 
 ## 🚀 Key Findings
+- ResNet50 + CLAHE achieves near state-of-the-art performance with simpler architecture and better deployability
 - Hybrid CNN-Transformer significantly outperforms CNN-based models
 - Attention mechanisms improve global feature understanding
 - Grad-CAM improves interpretability and trust in predictions

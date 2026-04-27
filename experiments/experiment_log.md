@@ -107,3 +107,53 @@ Conclusion:
 - Best candidate for final deployment and research publication
 
 Status: Completed
+
+--------------------------------------------------
+
+Experiment 5: ResNet50 with CLAHE + Augmentation + Deployment (Flask)
+---------------------------------------------------------------------
+
+Framework: PyTorch 
+Model: ResNet50 (Transfer Learning)
+
+Preprocessing:
+- CLAHE (Contrast Limited Adaptive Histogram Equalization)
+- Data augmentation
+- Image normalization
+
+Techniques:
+- Transfer learning (ResNet50)
+- Grad-CAM for explainability
+- Model deployment using Flask web application
+
+Test Performance:
+- Test Loss: 0.1695
+- Test Accuracy: 0.9276
+- Test AUC: 0.9856
+
+Classification Report:
+- Precision: 0.91 (Normal), 0.94 (TB)
+- Recall: 0.94 (Normal), 0.91 (TB)
+- F1-score: ~0.93 overall
+
+Observations:
+- Performance comparable to hybrid CNN-Transformer model
+- CLAHE improves contrast and feature visibility
+- Strong balance between precision and recall
+- Robust performance on test dataset
+
+Deployment Features:
+- Flask-based web interface
+- Accepts input chest X-ray image
+- Displays:
+  - Original image
+  - CLAHE enhanced image
+  - Grad-CAM heatmap
+  - Overlayed Grad-CAM visualization
+
+Conclusion:
+- Achieved near state-of-the-art performance with simpler architecture
+- Deployment adds real-world usability and interpretability
+- Model suitable for practical AI-assisted diagnosis systems
+
+Status: Completed
