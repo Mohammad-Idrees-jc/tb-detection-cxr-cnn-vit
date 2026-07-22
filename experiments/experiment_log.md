@@ -1,159 +1,294 @@
-Experiment 1: CNN Baseline
---------------------------
-Description: Initial CNN model for TB detection from chest X-ray images.
+# Experiment Log
 
-Performance:
-- Train Accuracy: 82%
-- Validation Accuracy: 78%
+This document records the chronological evolution of the project.
 
-Observations:
-- Basic feature extraction
-- Limited generalization capability
+---
 
-Status: Completed
+## Experiment 1
 
---------------------------------------------------
+Model
 
-Experiment 2: CNN + CLAHE + DenseNet121 (CheXNet)
--------------------------------------------------
-Model: Pretrained DenseNet121 (CheXNet)
+CNN Baseline
 
-Preprocessing:
-- CLAHE (Contrast Limited Adaptive Histogram Equalization)
+Framework
+
+TensorFlow / Keras
+
+Objective
+
+Develop a simple CNN baseline for TB classification.
+
+Performance
+
+Training Accuracy
+
+82%
+
+Validation Accuracy
+
+78%
+
+Observations
+
+- Basic feature extraction.
+- Established baseline performance.
+
+Status
+
+Completed
+
+---
+
+## Experiment 2
+
+Model
+
+DenseNet121 (CheXNet)
+
+Framework
+
+TensorFlow / Keras
+
+Improvements
+
+- CLAHE preprocessing
 - Data augmentation
+- Transfer Learning
 
-Performance:
-- Test Accuracy: 80.22%
-- Test AUC: 0.8763
-- Precision: 0.8428
-- Recall: 0.7444
+Performance
 
-Observations:
-- Improved feature extraction
-- Better generalization compared to baseline
-- Slight class imbalance effect observed
+Accuracy
 
-Status: Completed
+80.22%
 
---------------------------------------------------
+AUC
 
-Experiment 3: PyTorch DenseNet121 with Grad-CAM
-----------------------------------------------
-Framework: PyTorch
-Model: Pretrained DenseNet121 (torchxrayvision)
-Weights: densenet121-res224-all
+0.8763
 
-Preprocessing:
-- Image normalization
-- Data augmentation
+Observations
+
+- Improved generalization.
+- Better feature representation.
+
+Status
+
+Completed
+
+---
+
+## Experiment 3
+
+Model
+
+DenseNet121
+
+Framework
+
+PyTorch
+
+Improvements
+
+- Migration to PyTorch
+- Grad-CAM
+- Transfer Learning
+
+Performance
+
+Validation Accuracy
+
+76.78%
+
+Validation AUC
+
+0.8543
+
+Observations
+
+- Improved explainability.
+- Framework transition completed successfully.
+
+Status
+
+Completed
+
+---
+
+## Experiment 4
+
+Model
+
+Hybrid CNN-Transformer
+
+Backbone
+
+ResNet50
+
+Improvements
+
+- Multi-head Self Attention
+- Transformer Encoder
+- Grad-CAM
+
+Performance
+
+Accuracy
+
+93.04%
+
+AUC
+
+0.9860
+
+Observations
+
+- Significant improvement.
+- Strong global feature learning.
+
+Status
+
+Completed
+
+---
+
+## Experiment 5
+
+Model
+
+ResNet50
+
+Improvements
+
 - CLAHE
+- Data augmentation
+- Flask Deployment
 
-Techniques:
+Performance
+
+Accuracy
+
+92.76%
+
+AUC
+
+0.9856
+
+Deployment
+
+Flask application
+
+Features
+
+- Image Upload
+- CLAHE
+- Grad-CAM
+- Overlay visualization
+
+Status
+
+Completed
+
+---
+
+## Experiment 6 (Final)
+
+Model
+
+Hybrid CNN-Transformer
+
+Backbone
+
+DenseNet121
+
+Major Improvements
+
+- DenseNet121 backbone
+- Vision Transformer
+- CLAHE preprocessing
+- Mixup
+- Label smoothing
+- Cosine Annealing Warm Restarts
+- AdamW
+- Gradient clipping
 - Transfer learning
-- Grad-CAM for explainability
+- Explainable AI
+- Flask deployment
 
-Performance:
-- Training Accuracy: 80.42%
-- Validation Accuracy: 76.78%
-- Validation AUC: 0.8543
-- Sensitivity: 0.7758
+Dataset
 
-Observations:
-- Improved interpretability with Grad-CAM
-- Stable but moderate performance
-- Slight drop compared to TensorFlow DenseNet version
+2388 Chest X-rays
 
-Status: Completed
+Training
 
---------------------------------------------------
+1670
 
-Experiment 4: Hybrid CNN-Transformer (ResNet50 + Multi-Head Attention)
-----------------------------------------------------------------------
-Architecture: Hybrid CNN-Transformer
-Backbone: ResNet50 (Transfer Learning)
-Transformer Blocks: 4
-Embedding Dimension: 768
-Attention Heads: 8
+Validation
 
-Preprocessing:
-- Data augmentation
-- Image normalization
+359
 
-Techniques:
-- Transfer learning (ResNet50)
-- Multi-head self-attention (Transformer)
-- Grad-CAM visualization
+Testing
 
-Dataset:
-- Total Images: 2388
-- Train: 1670
-- Validation: 359
-- Test: 359
+359
 
-Performance:
-- Best Validation AUC: 0.9949
-- Test Accuracy: 0.9304
-- Test AUC: 0.9860
-- Test Loss: 0.1696
+Performance
 
-Observations:
-- Significant improvement in classification performance
-- Transformer enhances global feature understanding
-- Excellent AUC indicates strong separability
-- Grad-CAM shows better localization of infected regions
+Test Accuracy
 
-Conclusion:
-- Hybrid CNN-Transformer outperforms all previous models
-- Best candidate for final deployment and research publication
+95.54%
 
-Status: Completed
+Test AUC
 
---------------------------------------------------
+0.9926
 
-Experiment 5: ResNet50 with CLAHE + Augmentation + Deployment (Flask)
----------------------------------------------------------------------
+Test Loss
 
-Framework: PyTorch 
-Model: ResNet50 (Transfer Learning)
+0.2322
 
-Preprocessing:
-- CLAHE (Contrast Limited Adaptive Histogram Equalization)
-- Data augmentation
-- Image normalization
+Classification
 
-Techniques:
-- Transfer learning (ResNet50)
-- Grad-CAM for explainability
-- Model deployment using Flask web application
+Precision
 
-Test Performance:
-- Test Loss: 0.1695
-- Test Accuracy: 0.9276
-- Test AUC: 0.9856
+Normal : 0.96
 
-Classification Report:
-- Precision: 0.91 (Normal), 0.94 (TB)
-- Recall: 0.94 (Normal), 0.91 (TB)
-- F1-score: ~0.93 overall
+TB : 0.95
 
-Observations:
-- Performance comparable to hybrid CNN-Transformer model
-- CLAHE improves contrast and feature visibility
-- Strong balance between precision and recall
-- Robust performance on test dataset
+Recall
 
-Deployment Features:
-- Flask-based web interface
-- Accepts input chest X-ray image
-- Displays:
-  - Original image
-  - CLAHE enhanced image
-  - Grad-CAM heatmap
-  - Overlayed Grad-CAM visualization
+Normal : 0.95
 
-Conclusion:
-- Achieved near state-of-the-art performance with simpler architecture
-- Deployment adds real-world usability and interpretability
-- Model suitable for practical AI-assisted diagnosis systems
+TB : 0.96
 
-Status: Completed
+F1-score
+
+Normal : 0.96
+
+TB : 0.96
+
+Outputs
+
+- best_model.pth
+- pipeline_info.json
+- ROC Curve
+- Confusion Matrix
+- Training History
+- CLAHE Preview
+- Grad-CAM Visualization
+
+Deployment
+
+Flask web application
+
+Capabilities
+
+- Upload chest X-ray
+- Automatic prediction
+- CLAHE enhancement
+- Grad-CAM heatmap
+- Overlay visualization
+
+Conclusion
+
+The final Hybrid CNN-Transformer using a DenseNet121 backbone achieved the best overall performance (95.54% accuracy and 0.9926 AUC), while also providing explainable predictions and a deployable clinical prototype. This version represents the culmination of the research and serves as the foundation for the accompanying undergraduate thesis and Zenodo preprint.
+
+Status
+
+Final Version (v2.0)
